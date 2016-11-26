@@ -2,11 +2,13 @@ package com.example.hagitz.locadoapp;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -22,7 +24,7 @@ public class ReminderAdapter extends ArrayAdapter<Reminder> {
 
     TextView tvName;
     TextView tvAddress;
-    ImageButton imgBtn;
+    ImageView img;
 
     public ReminderAdapter(Context context,  ArrayList<Reminder> objects) {
         super(context,R.layout.reminder_item, objects);
@@ -31,7 +33,7 @@ public class ReminderAdapter extends ArrayAdapter<Reminder> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent)
+    public View getView(final int position, View convertView, ViewGroup parent)
     {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -39,17 +41,21 @@ public class ReminderAdapter extends ArrayAdapter<Reminder> {
 
         tvName = (TextView) rowView.findViewById(R.id.tvName);
         tvAddress = (TextView) rowView.findViewById(R.id.tvAddress);
-        imgBtn = (ImageButton) rowView.findViewById(R.id.btnState);
+        img = (ImageView) rowView.findViewById(R.id.imgState);
 
         tvName.setText(valuesList.get(position).getName());
         tvAddress.setText(valuesList.get(position).getDAddress());
-        imgBtn.setImageResource(R.drawable.alarm);
-        imgBtn.setBackgroundColor(Color.GREEN);
-        imgBtn.setOnClickListener(new View.OnClickListener() {
+        img.setImageResource(R.drawable.alarmblue);
+        img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ImageButton mg = (ImageButton) view.findViewById(R.id.btnState);
-                mg.setImageResource(R.drawable.alarmblue);
+                valuesList.get(position).changeState();
+                boolean state= valuesList.get(position).isState();
+                ImageView mg = (ImageView) view.findViewById(R.id.imgState);
+                if(state)
+                    mg.setImageResource(R.drawable.alarmblue);
+                else
+                    mg.setImageResource(R.drawable.alarm);
             }
         });
         return rowView;

@@ -54,15 +54,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
+
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-        Toast.makeText(this,"Item "+remindersLists.get(position).getName()+" clicked",Toast.LENGTH_SHORT).show();
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+       // Toast.makeText(this,"Item "+remindersLists.get(i).getName()+" clicked",Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onItemClick: ");
     }
 
     @Override
-    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
-        Toast.makeText(this,"Item "+remindersLists.get(position).getName()+" Long clicked",Toast.LENGTH_SHORT).show();
-        return true;  // i.e. all ended well
+    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+        return true;
     }
 }

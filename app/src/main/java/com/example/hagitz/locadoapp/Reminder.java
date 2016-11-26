@@ -49,5 +49,9 @@ public class Reminder {
     public void setCreateDay(Date createDay) {
         this.createDay = createDay;
     }
+
+    public void changeState() {
+        state= !state;
+    }
 }
 

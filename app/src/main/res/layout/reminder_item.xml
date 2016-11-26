@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="25dp"
+        android:layout_alignLeft="@+id/tvName"
+        android:layout_alignBottom="@+id/btnState"
+        android:textStyle="italic"
+        android:typeface="serif"
+        android:hint="Adress" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ff0000"
+        android:layout_alignParentTop="true"
+        android:textSize="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/btnState"
+        android:textStyle="bold"
+        android:typeface="normal"
+        android:hint="Name" />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/btnState"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

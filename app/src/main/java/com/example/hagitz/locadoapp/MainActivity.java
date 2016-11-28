@@ -1,6 +1,8 @@
 package com.example.hagitz.locadoapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,11 +21,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private ListView mainListView ;
     ArrayList<Reminder> remindersLists;
     ReminderAdapter adapter;
-
+    FloatingActionButton btnAdd;
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        context = this;
+        btnAdd = (FloatingActionButton) findViewById(R.id.addRem);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context,"Click new",Toast.LENGTH_SHORT).show();
+            }
+        });
         mainListView = (ListView) findViewById(R.id.listView);
         remindersLists = new ArrayList<Reminder>();
         remindersLists.add(new Reminder("test", "test it"));

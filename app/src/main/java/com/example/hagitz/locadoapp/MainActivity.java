@@ -1,22 +1,31 @@
 package com.example.hagitz.locadoapp;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener{
 
     String TAG = "Debug";
-
 
     private ListView mainListView ;
     ArrayList<Reminder> remindersLists;
@@ -32,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context,"Click new",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Click new", Toast.LENGTH_SHORT).show();
             }
         });
         mainListView = (ListView) findViewById(R.id.listView);
@@ -41,19 +50,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         remindersLists.add(new Reminder("test1", "test it 1"));
         remindersLists.add(new Reminder("test2", "test it 2"));
 
-        adapter = new ReminderAdapter(this,remindersLists);
+        adapter = new ReminderAdapter(this, remindersLists);
         mainListView.setAdapter(adapter);
 
         mainListView.setOnItemClickListener(this);
         mainListView.setOnItemLongClickListener(this);
     }
 
-    public void createNewReminder(View view)
-    {
-        Intent intent = new Intent(this, AddReminderActivity.class);
-        startActivityForResult(intent,1);
 
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -65,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
-
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
        // Toast.makeText(this,"Item "+remindersLists.get(i).getName()+" clicked",Toast.LENGTH_SHORT).show();
@@ -74,6 +77,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+        remindersLists.remove(i);
+        adapter.notifyDataSetChanged();
         return true;
     }
+
+    public void createNewReminder(View view) {
+        Intent intent = new Intent(this,AddReminderActivity.class);
+        startActivityForResult(intent,1);
+    }
 }
+
+

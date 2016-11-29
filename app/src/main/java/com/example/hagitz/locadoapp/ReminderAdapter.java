@@ -45,7 +45,8 @@ public class ReminderAdapter extends ArrayAdapter<Reminder> {
 
         tvName.setText(valuesList.get(position).getName());
         tvAddress.setText(valuesList.get(position).getDAddress());
-        img.setImageResource(R.drawable.alarmblue);
+        img.setImageResource(R.drawable.ic_lock_idle_alarm_alpha);
+        img.setColorFilter(Color.BLUE);
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,9 +54,9 @@ public class ReminderAdapter extends ArrayAdapter<Reminder> {
                 boolean state= valuesList.get(position).isState();
                 ImageView mg = (ImageView) view.findViewById(R.id.imgState);
                 if(state)
-                    mg.setImageResource(R.drawable.alarmblue);
+                    mg.setColorFilter(Color.BLUE);
                 else
-                    mg.setImageResource(R.drawable.alarm);
+                    mg.setColorFilter(Color.GRAY);
             }
         });
         return rowView;

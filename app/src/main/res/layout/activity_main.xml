@@ -43,4 +43,13 @@
         app:backgroundTint="@color/colorPrimary"
         app:fabSize="normal"
         android:id="@+id/addRem" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Listen"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/addRem"
+        android:onClick="startListen" />
 </RelativeLayout>

@@ -1,21 +1,32 @@
 package com.example.hagitz.locadoapp;
 
+import android.location.Location;
+
 import java.util.Date;
 
-/**
- * Created by hagitz on 11/26/2016.
- */
 public class Reminder {
+
     private String name;
     private String address;
+    private String details;
     private Date createDay;
     private boolean state;
-
+    private int distance;
+    private Location location;
+    // Ringtone
 
     public Reminder(String _name, String _add) {
         address = _add;
         name = _name;
         state = true;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public boolean isState() {
@@ -52,6 +63,30 @@ public class Reminder {
 
     public void changeState() {
         state= !state;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
     }
 }
 
